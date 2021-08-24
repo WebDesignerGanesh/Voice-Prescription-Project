@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Simple speech input for inputs and textareas</title>
+<meta name="viewport" content="width=540">
+<style>
+.si-wrapper {
+	display: inline-block;
+	position: relative;
+}
+
+.speech-input {
+	margin: 0;
+}
+
+.si-wrapper button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 18px;
+	width: 18px;
+	margin: 0;
+	border: 0;
+	padding: 0;
+	background: none;
+	font: 0/0 a;
+}
+
+.si-mic,
+.si-mic:after,
+.si-holder,
+.si-holder:before,
+.si-holder:after {
+	position: absolute;
+	background: #333;
+}
+
+/* Microphone icon */
+.si-mic {
+	display: block;
+	height: 25%; /* 8px / 32px */
+	top: 9.375%; /* 3px / 32px */
+	left: 37.5%; /* 12px / 32px */
+	right: 37.5%; /* 12px / 32px */
+	-webkit-border-radius: 99px 99px 0 0;
+	-moz-border-radius: 99px 99px 0 0;
+	border-radius: 99px 99px 0 0;
+}
+
+.si-mic:before,
+.si-mic:after,
+.si-holder {
+	-webkit-border-radius: 0 0 99px 99px;
+	-moz-border-radius: 0 0 99px 99px;
+	border-radius: 0 0 99px 99px;
+}
+
+.si-mic:before {
+	position: absolute;
+	z-index: 1;
+	content: '';
+	width: 150%; /* 12px / 8px */
+	height: 137.5%; /* 11px / 8px */
+	top: 100%; /* 8px / 8px */
+	left: -25%; /* -2px / 8px */
+	background: #fff;
+}
+
+.si-mic:after {
+	z-index: 1;
+	content: '';
+	width: 100%; /* 10px / 10px */
+	height: 100%; /* 10px / 10px */
+	top: 110%; /* 11px / 10px */
+	left: 0;
+}
+
+.si-holder {
+	display: block;
+	height: 40.625%; /* 13px / 32px */
+	width: 50%; /* 16px / 32px */
+	left: 25%; /* 8px / 32px */
+	top: 37.5%; /* 12px / 32px */
+}
+
+.si-holder:after {
+	content: '';
+	width: 66.666%; /* 8px / 16px */
+	height: 18.182%; /* 2px / 13px */
+	bottom: -30.769%; /* -4px / 13px */
+	left: 16.667%; /* 2px / 16px */
+}
+
+.si-holder:before {
+	content: '';
+	width: 33.333%; /* 4px / 16px */
+	height: 27.273%; /* 3px / 13px */
+	top: 92.308%; /* 12px / 13px */
+	left: 33.333%; /* 4px / 16px */
+}
+body{
+	align : center;
+}
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<!-- <link rel="stylesheet" href="demo.css"> -->
+
+<!-- <h1>
+	<code><span class="tag-marker">&lt;</span><span class="tag-name">input</span><span class="tag-marker">&gt;</span></code> and <code><span class="tag-marker">&lt;</span><span class="tag-name">textarea</span><span class="tag-marker">&gt;</span></code> speech recognition
+	<a class="github-button" href="https://github.com/Daniel-Hug/speech-input" data-icon="octicon-star" data-style="mega" data-count-href="/Daniel-Hug/speech-input/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star Daniel-Hug/speech-input on GitHub">Star</a>
+</h1> -->
+<body>
+<form action="" method="POST" novalidate>
+ {% csrf_token %}	
+
+<div class = "container">
+<div class = "jumbotron">
+<h1> Prescription</h1>
+
+<h2>Username</h2>
+{% comment %} <input type="text" class="speech-input" placeholder="speak" name="Username"> {% endcomment %}
+<textarea class="speech-input" placeholder="speak" rows="2" cols="60" name="Username"></textarea>
+
+<h2>DoctorName</h2>
+{% comment %} <input type="text" class="speech-input" placeholder="speak" name="Doctor_name"> {% endcomment %}
+<textarea class="speech-input" placeholder="speak" rows="2" cols="60" name="Doctor_name"></textarea>
+
+<h2>PatientName</h2>
+{% comment %} <input type="text" class="speech-input" placeholder="speak" name="Patient_name"> {% endcomment %}
+<textarea class="speech-input" placeholder="speak" rows="2" cols="60" name="Patient_name"></textarea>
+
+<h2>Age</h2>
+{% comment %} <input type="text" class="speech-input" placeholder="speak" name="age"> {% endcomment %}
+<textarea class="speech-input" placeholder="speak" rows="2" cols="60" name="age"></textarea>
+
+<h2>Gender</h2>
+{% comment %} <input type="text" class="speech-input" placeholder="speak" name="gender"> {% endcomment %}
+<textarea class="speech-input" placeholder="speak" rows="2" cols="60" name="gender"></textarea>
+
+
+<h2>Symptoms</h2>
+{% comment %} <input type="text" class="speech-input" placeholder="speak" name="symptoms"> {% endcomment %}
+<textarea class="speech-input" placeholder="speak" rows="2" cols="60" name="symptoms"></textarea>
+
+<h2>Medicines</h2>
+<textarea class="speech-input" placeholder="speak" rows="2" cols="60" name="medicines"></textarea>
+
+<h2>Prevention</h2>
+<textarea class="speech-input" placeholder="speak" rows="2" cols="60" name="preventions"></textarea>
+
+<h2>Date</h2>
+<textarea class="speech-input" placeholder="speak" rows="2" cols="60" name="date"></textarea>
+
+<br>
+<br>
+ <input type = "submit" value = "generate pdf" class="btn btn-success">
+ <a href = "{% url 'test_view' %}" class = "nav-link">click here</a>
+
+</div>
+</div>
+</form>
+
+<script>
+/*global webkitSpeechRecognition */
+(function() {
+	'use strict';
+
+	// check for support (webkit only)
+	if (!('webkitSpeechRecognition' in window)) return;
+
+	var talkMsg = 'Speak now';
+	// seconds to wait for more input after last
+		var defaultPatienceThreshold = 6;
+
+	function capitalize(str) {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	}
+
+	var inputEls = document.getElementsByClassName('speech-input');
+
+	[].forEach.call(inputEls, function(inputEl) {
+		var patience = parseInt(inputEl.dataset.patience, 10) || defaultPatienceThreshold;
+		var micBtn, micIcon, holderIcon, newWrapper;
+		var shouldCapitalize = true;
+
+		// gather inputEl data
+		var nextNode = inputEl.nextSibling;
+		var parent = inputEl.parentNode;
+		var inputRightBorder = parseInt(getComputedStyle(inputEl).borderRightWidth, 10);
+		var buttonSize = 0.8 * (inputEl.dataset.buttonsize || inputEl.offsetHeight);
+
+		// default max size for textareas
+		if (!inputEl.dataset.buttonsize && inputEl.tagName === 'TEXTAREA' && buttonSize > 26) {
+			buttonSize = 26;
+		}
+
+		// create wrapper if not present
+		var wrapper = inputEl.parentNode;
+		if (!wrapper.classList.contains('si-wrapper')) {
+			wrapper = document.createElement('div');
+			wrapper.classList.add('si-wrapper');
+			wrapper.appendChild(parent.removeChild(inputEl));
+			newWrapper = true;
+		}
+
+		// create mic button if not present
+		micBtn = wrapper.querySelector('.si-btn');
+		if (!micBtn) {
+			micBtn = document.createElement('button');
+			micBtn.type = 'button';
+			micBtn.classList.add('si-btn');
+			micBtn.textContent = 'speech input';
+			micIcon = document.createElement('span');
+			holderIcon = document.createElement('span');
+			micIcon.classList.add('si-mic');
+			holderIcon.classList.add('si-holder');
+			micBtn.appendChild(micIcon);
+			micBtn.appendChild(holderIcon);
+			wrapper.appendChild(micBtn);
+
+			// size and position mic and input
+			micBtn.style.cursor = 'pointer';
+			micBtn.style.top = 0.125 * buttonSize + 'px';
+			micBtn.style.height = micBtn.style.width = buttonSize + 'px';
+			inputEl.style.paddingRight = buttonSize - inputRightBorder + 'px';
+		}
+
+		// append wrapper where input was
+		if (newWrapper) parent.insertBefore(wrapper, nextNode);
+
+		// setup recognition
+		var prefix = '';
+		var isSentence;
+		var recognizing = false;
+		var timeout;
+		var oldPlaceholder = null;
+		var recognition = new webkitSpeechRecognition();
+		recognition.continuous = true;
+		recognition.interimResults = true;
+
+		// if lang attribute is set on field use that
+		// (defaults to use the lang of the root element)
+		if (inputEl.lang) recognition.lang = inputEl.lang;
+
+		function restartTimer() {
+			timeout = setTimeout(function() {
+				recognition.stop();
+			}, patience * 1000);
+		}
+
+		recognition.onstart = function() {
+			oldPlaceholder = inputEl.placeholder;
+			inputEl.placeholder = inputEl.dataset.ready || talkMsg;
+			recognizing = true;
+			micBtn.classList.add('listening');
+			restartTimer();
+		};
+
+		recognition.onend = function() {
+			recognizing = false;
+			clearTimeout(timeout);
+			micBtn.classList.remove('listening');
+			if (oldPlaceholder !== null) inputEl.placeholder = oldPlaceholder;
+
+			// If the <input> has data-instant-submit and a value,
+			if (inputEl.dataset.instantSubmit !== undefined && inputEl.value) {
+				// submit the form it's in (if it is in one).
+				if (inputEl.form) inputEl.form.submit();
+			}
+		};
+
+		recognition.onresult = function(event) {
+			clearTimeout(timeout);
+
+			// get SpeechRecognitionResultList object
+			var resultList = event.results;
+
+			// go through each SpeechRecognitionResult object in the list
+			var finalTranscript = '';
+			var interimTranscript = '';
+			for (var i = event.resultIndex; i < resultList.length; ++i) {
+				var result = resultList[i];
+
+				// get this result's first SpeechRecognitionAlternative object
+				var firstAlternative = result[0];
+
+				if (result.isFinal) {
+					finalTranscript = firstAlternative.transcript;
+				} else {
+					interimTranscript += firstAlternative.transcript;
+				}
+			}
+
+			// capitalize transcript if start of new sentence
+			var transcript = finalTranscript || interimTranscript;
+			transcript = !prefix || isSentence ? capitalize(transcript) : transcript;
+
+			// append transcript to cached input value
+			inputEl.value = prefix + transcript;
+
+			// set cursur and scroll to end
+			inputEl.focus();
+			if (inputEl.tagName === 'INPUT') {
+				inputEl.scrollLeft = inputEl.scrollWidth;
+			} else {
+				inputEl.scrollTop = inputEl.scrollHeight;
+			}
+
+			restartTimer();
+		};
+
+		micBtn.addEventListener('click', function(event) {
+			event.preventDefault();
+
+			// stop and exit if already going
+			if (recognizing) {
+				recognition.stop();
+				return;
+			}
+
+			// Cache current input value which the new transcript will be appended to
+			var endsWithWhitespace = inputEl.value.slice(-1).match(/\s/);
+			prefix = !inputEl.value || endsWithWhitespace ? inputEl.value : inputEl.value + ' ';
+
+			// check if value ends with a sentence
+			isSentence = prefix.trim().slice(-1).match(/[\.\?\!]/);
+
+			// restart recognition
+			recognition.start();
+		}, false);
+	});
+})();
+
+</script>
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
+</body>
+</html>

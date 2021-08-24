@@ -1,0 +1,78 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <style> 
+    body{
+       background-image: url("/static/bluetri.jpeg");
+       background-position:center;
+       background-size:cover;
+       font-family:sans-serif;
+     
+   }
+   .name{
+       margin-left:25px;
+       margin-top:30px;
+       width:125px;
+       color:whith;
+       font-size:18px;
+       font-weigth:700;
+   }
+ 
+      .div{
+       margin-top:100px;
+       margin-left : 250px;
+       }
+        .regform{
+       width:800px;
+       background-color:rgb(0,0,0,6);
+       margin : auto ;
+       color:#FFFFFF;
+       padding:10px 0px 10px 0px;
+       text-align:center;
+       border-radius:15px 15px 0px 0px;
+   }
+   .main{
+       background-color:rgb(0,0,0,0.5);
+       width:800px;
+       margin:auto;
+   }
+   .center {
+  margin-left:350px;
+  margin-bottom : 15px;
+}
+    .form{
+      margin-left : 60px ;
+      margin-right: 60px ;
+    }
+    </style>
+</head>
+<body>
+<div class="div">
+   <div class="col-sm-10">
+    <div class="regform"><h1>Login Page</h1></div>
+    <div class = "main">
+    <form action="" method="POST" novalidate>
+      {% csrf_token %}
+      {% for fm in form %}
+      <div class="form">
+       <div class="form-group" style="color : black;">
+        <b>{{fm.label_tag}}<b> {{fm}}  <small class="text-warning">{{fm.errors|striptags}}</small>
+       </div>
+      </div>
+      {% endfor %}
+      
+      <input type="submit" value="Login" class="btn btn-primary center">
+      
+      {% if form.non_field_errors %}
+       {% for error in form.non_field_errors %}
+        <p class="alert alert-danger my-3">{{error}}</p>
+       {% endfor %}
+      {% endif %}  
+
+    </form>
+    </div>
+   </div>      
+</div>
+</body>   
+{% endblock content %}

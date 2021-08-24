@@ -1,0 +1,78 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<head>
+
+    <!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <style>
+    body{
+       background-color : #e8ffff;
+       background-position:center;
+       background-size:cover;
+       font-family:sans-serif;
+     }
+    h5{
+        color : #51adcf;
+    }
+    .ans{
+        margin-right : 200px ;
+        background-color : #a5ecd7;
+    }
+    p{
+        margin-top : 10px ;
+        margin-bottom : 5px ;
+        margin-left :20px ; 
+    }
+    </style>
+</head>
+
+
+<body>
+    <div style="text-align:center; margin-top:20px;">
+        <img src="/static/help1.jpeg" height=100px width=100px >
+        <h1>See Here It may Help you</h1>    
+    </div>
+ 
+    <div style="margin-top:40px;margin-left:200px;">
+
+        <h5>1.How can I see my documents ?</h5>
+        <div class="ans">
+            <p>
+            To see your document you have to follow the steps :<br>
+            1. Go to home page click on sign up <br>
+            2. After successfully register click on login <br>
+            3. Then go to dashboard <br>
+            Here you can see your documents.
+            </p>
+        </div><br><br>
+
+        <h5>2. How can I prescribe to my patients ?</h5>
+        <div class="ans">
+            <p>
+            To prescribe follow the steps given below : <br>
+            1. login to your account with your valid credentials <br>
+            2. After login go to dashboard <br>
+            3. Now click on add prescription <br>
+            4. Fill the prescription form <br>
+            5. And click on generate pdf <br>
+            </p>
+        </div><br><br>
+
+        <h5>3. How to login in my account ?</h5>
+        <div class="ans">
+            <p>
+            For login first register yourself by filling signup form <br>
+            Then go to login page <br>
+            fill your username and password , click on login button
+            </p>
+        </div><br><br>
+    </div>         
+</body>
+{% endblock content %}

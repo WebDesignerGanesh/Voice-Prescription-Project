@@ -1,0 +1,93 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+ <head>
+<!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing Script">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento">
+
+<style>
+body{
+  background-image : url("/static/backnew.jpg");
+}
+   
+ .img{
+   margin-left : 850px ;
+ }  
+   
+  .div{
+    margin-top : 150px ;
+    margin-left : 40px;
+    
+  }
+  h1{
+    font-size : 55px;
+    color:#006666;
+  }
+h3{
+  color:#008080;
+}
+  .column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; 
+}
+
+.di{
+  padding : 10px;
+  margin-left : 230px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+} 
+
+</style>
+</head>
+
+<body> 
+<div>
+<div>
+    <div class="row">
+
+        <div class="column">
+            <div class= "div"> 
+            <h1>We The Best Doctors </h1>
+            <h3>we are here for your care ...</h3>    
+            </div>
+            <div class="row">
+              <div class="column">
+              <br>
+              <img src="/static/doctor1.png" height=200px width=200px style="margin-left: 150px">
+              </div>
+              <div class="column">
+              <br><br>
+              <h4><p>Take Your Priscription</p></h4> <br>
+              <h4><p>Keep it safe here</p></h4><br>
+              <h4><p>See it any time</p></h4>  <br>
+              </div> 
+            </div> 
+        </div>
+
+
+        <div class="column">
+        <img src="/static/dpimage.png">
+        </div>
+
+    </div>
+
+</div>
+<br><br><br>
+
+</div>
+</body>
+{% endblock content %}

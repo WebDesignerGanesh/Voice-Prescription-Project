@@ -1,0 +1,113 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block msg %}
+
+    {% if messages %}
+     {% for msg in messages %}
+      <div {% if msg.tags %} class="alert alert-{{msg.tags}} alert-dismissible fade show"{% endif %}>
+        <strong>{{msg}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+        </button>
+      </div>  
+     {% endfor %}
+    {% endif %} 
+
+         
+{% endblock msg %}
+{% block side %}
+<div class="container-fluid">
+   <div class="row">
+       <div class="col-md-2 bg-dark py-5">
+           <nav class="navbar navbar-dark">
+               <a href="" class="navbar-brand">
+                   <div class="text-center">
+                      </div> 
+                       <p>{{full_name}}</p>
+               </a>
+               <ul class="navbar-nav">
+                   <li class="nav-item">
+                       <a href="" class="nav-link">View Profile</a>
+                   </li>
+                   <li class="nav-item">
+                       <a href="" class="nav-link">Edit Profile</a>
+                   </li>
+                   <li class="nav-item">
+                       <a href="" class="nav-link">View Prescription</a>
+                   </li>
+                   <li class="nav-item">
+                       <a href="" class="nav-link">Change Password</a>
+                   </li>
+
+               </ul>    
+           
+           </nav>
+       </div>
+       <!--right side-->
+         <div class="col-md-10">
+           {% block dashboard %}
+           <div class="col-sm-10">
+             <h3 class="text-center my-5">Dashboard Page</h3>
+            {% if perms.blog.add_post %}
+             <a href="{% url 'addpost' %}" class="btn btn-success">Add Prescription</a>
+            {% endif %}
+             <h4 class="text-center alert alert-info mt-3">Presciption Information</h4>
+            {% if presciption %}
+              <table class="table table-hover bg-white table table-bordered table-striped">
+                 <thead>
+                    <tr class="text-center">
+                       <th scope="col" style="width: 2%">ID</th>
+                       <th scope="col" style="width: 10%">Username</th>
+                       <th scope="col" style="width: 10%">DoctorName</th>
+                       <th scope="col" style="width: 10%">PatientName</th>
+                       <th scope="col" style="width: 5%">Age</th>
+                       <th scope="col" style="width: 5%">Gender</th>
+                       <th scope="col" style="width: 25%">Symptoms</th>
+                       <th scope="col" style="width: 25%">Medicines</th>
+                       <th scope="col" style="width: 25%">Preventions</th>
+                       <th scope="col" style="width: 10%">Date</th>
+         
+         
+         
+         
+         
+                    </tr>
+                 </thead>
+                 <tbody>
+                  {% for post in presciption %}
+                  <tr>
+                     <th scope="row">{{post.id}}</th>
+                     <td>{{post.Username}}</td>
+                     <td>{{post.Doctor_name}}</td>
+                     <td>{{post.Patient_name}}</td>
+                     <td>{{post.age}}</td>
+                     <td>{{post.gender}}</td>
+                     <td>{{post.symptoms}}</td>
+                     <td>{{post.medicines}}</td>
+                     <td>{{post.preventions}}</td>
+                     <td>{{post.date}}</td>
+         
+                     
+                  </tr>
+                  {% endfor %}
+                 </tbody>
+                 
+                 
+                        
+              </table>
+            {% else %}
+              <h4 class="text-center alert alert-warning">No Records</h4> 
+            {% endif %}   
+         
+           </div>
+           {% endblock dashboard %}
+   
+
+         </div>
+        
+   </div>
+</div>
+{% endblock side %}
+
+
+

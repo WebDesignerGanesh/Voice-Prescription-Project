@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    @page{
+        size: "A4";
+        margin: 2.5cm 1.5cm 3.5cm 1.5cm;
+    }
+   h1{
+       align: center;
+   }
+    </style>
+  </head>
+  <body>
+    <h1> Prescription </h1>
+    {% for var1 in var %}
+      <h2>Username : {{var1.Username}}</h2>
+      <h2> Doctor-name : {{var1.Doctor_name}} </h2>
+      <h2> Patient-name : {{var1.Patient_name}} </h2>
+      <h2> Age : {{var1.age}} </h2>
+      <h2> Gender : {{var1.gender}} </h2>
+      <h2> Symptoms : {{var1.symptoms}} </h2>
+      <h2> Medicines : {{var1.medicines}} </h2>
+      <h2> Prevention : {{var1.preventions}} </h2>
+      <h2> Date : {{var1.date}} </h2>
+    {% endfor %}
+    {% comment %} {{var}} {% endcomment %}
+  </body>
+</html>
